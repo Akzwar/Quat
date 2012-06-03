@@ -8,26 +8,28 @@ class Quat
 
 	Quat(){}
 
-	Quat( Quat& Q )
+	Quat( const Quat& Q )
 	{
 		this->a = Q.a;
 		this->V = Q.V;
 	}
 
-	Quat( int _a, Vect& V )
+	Quat( long double _a, const Vect& _V )
 	{
 		this->a = _a;
 		this->V = _V;
 	}
 
-	Quat& operator + ( Quat& Q )
+	Quat operator + ( const Quat& Q )
 	{
-		return Quat( this->a + Q.a, this->V + Q.V );
+		Quat retQuat( this->a + Q.a, this->V + Q.V );
+		return retQuat;
 	}
 
-	Quat& operator * ( Quat& Q )
+	Quat operator * ( const Quat& Q )
 	{
-		return Quat( (this->a * Q.a) - (this->V * Q.V), Q.V * this->a + this->V * Q.a + this->V % Q.V );
+		Quat retQuat( (this->a * Q.a) - (this->V * Q.V), /*( Q.V * this->a ) +*/ ( this->V * Q.a ) + ( this->V % Q.V ) );
+		return retQuat;
 	}
 			
 };

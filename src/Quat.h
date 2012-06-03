@@ -28,7 +28,7 @@ class Quat
 
 	Quat operator * ( const Quat& Q )
 	{
-		Quat retQuat( (this->a * Q.a) - (this->V * Q.V), /*( Q.V * this->a ) +*/ ( this->V * Q.a ) + ( this->V % Q.V ) );
+		Quat retQuat( (this->a * Q.a) - (this->V * Q.V), ( Q.V * this->a ) + ( this->V * Q.a ) + ( this->V % Q.V ) );
 		return retQuat;
 	}
 			
